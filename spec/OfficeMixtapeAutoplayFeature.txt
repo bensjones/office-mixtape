@@ -1,0 +1,23 @@
+Feature: Autoplay songs
+    When a user loads the mixtape page for the first time, it will automatically play the latest song that has been submitted to FSF.
+
+    Scenario: First time visit
+    GIVEN I visit the site
+    AND I haven't visited the site before
+    THEN It should play the latest song submitted to FSF
+
+    Scenario: Visit after getting partway through a song.
+    GIVEN I visit the site 
+    AND I left during the playthrough of a song
+    THEN It should begin playing that song from the last point that it was playing.
+
+    Scenario: Visit after listening to a song.
+    GIVEN I visit the site
+    AND I left after a song started playing
+    AND There's songs that I haven't heard submitted.
+    THEN It should play the next latest song submitted to the FSF that I haven't heard.
+
+    Scenario: I have listened to every song.
+    GIVEN I am on the site
+    AND The last song I haven't heard has played
+    THEN It should display a message about how I've listened to everything on FSF, and suggest you put some more songs in.
